@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+</head>
+<style type="text/css">
+	body,html{
+		overflow: hidden;
+	}
+
+	.back{
+		background-color: black;
+		width: 100vw;
+		height: 100vh;
+		top: 0;
+		position: absolute;
+		animation: move 1.5s forwards;
+	}
+
+	.text{
+		list-style: none;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translateX(-50%) translateY(-50%);
+	}
+
+	.text li{
+		display: inline-block;
+		margin-right: 5px;
+		font-family: sans-serif;
+		font-weight: 300;
+		font-size: 5em;
+		color: white;
+		opacity: 1;
+		transition: all 1.5s ease;
+	}
+
+	.text li:last-child{
+		margin-right: 0;
+	}
+
+	.text.hidden{
+		opacity: 0;
+	}
+
+	.text.hidden li:nth-child(1) {transform:translate(-200px,-200px);}
+	.text.hidden li:nth-child(2) {transform:translate(20px,100px);}
+	.text.hidden li:nth-child(3) {transform:translate(-150px,-80px);}
+	.text.hidden li:nth-child(4) {transform:translate(10px,-200px);}
+	.text.hidden li:nth-child(5) {transform:translate(-300px,200px);}
+	.text.hidden li:nth-child(6) {transform:translate(20px,-20px);}
+	.text.hidden li:nth-child(7) {transform:translate(30px,-200px);}
+	.text.hidden li:nth-child(8) {transform:translate(-200px,-200px);}
+	.text.hidden li:nth-child(9) {transform:translate(20px,100px);}
+	.text.hidden li:nth-child(10) {transform:translate(-150px,-80px);}
+	.text.hidden li:nth-child(11) {transform:translate(10px,-200px);}
+@keyframes move{
+	0%{
+		left: -100vw;
+	}
+	10%{
+		left: -100vw;
+		transform: translateX(10vw);	
+	}
+	90%{
+		left: -100vw;
+		transform-origin: bottom;
+		transform: skewX(10deg) translateX(100vw);
+	}
+	100%{
+		transform-origin: bottom;
+		transform: skewX(0deg);
+		left: 0;
+	}
+}
+</style>
+<div class="back">
+	<span class="text hidden">
+		<li>A</li>
+		<li>P</li>
+		<li>O</li>
+		<li>G</li>
+		<li>E</li>
+		<li>E</li>
+		<li></li>
+		<li>2</li>
+		<li>0</li>
+		<li>1</li>
+		<li>8</li>
+	</span>
+</div>
+<script>
+	text = document.getElementsByClassName("text hidden")
+	function f(){
+		setTimeout(function(){
+			text[0].classList.remove("hidden");
+		}, 1600);
+	}
+	f();
+</script>
+</html>
