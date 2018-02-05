@@ -14,18 +14,26 @@
 		height: 100vh;
 		top: 0;
 		position: absolute;
-		animation: move 1.5s forwards;
+		/*animation: move 1.5s forwards;*/
 	}
 
 	.text{
 		display: inline-block;
-		transform: translateY(3vh) matrix(1,0,1,1,0,0);
 		font-size: 2vh;
 		/*color: white;*/
+		transform: translateX(45vw) translateY(47vh) matrix(1,0,0,1,0,0);
 		font-family: sans-serif;
-		/*animation: text-anim .5s forwards;
-		animation-play-state: paused;*/
+		/*display: none;*/
+		/*animation: text-anim .5s forwards;*/
+		/*animation-play-state: paused;*/
 
+	}
+
+	.loading{
+		display: none;
+		color: white;
+		transform: translateX(50vw) translateY(48vh);
+		font-family: sans-serif;
 	}
 
 	@keyframes text-anim{
@@ -35,6 +43,19 @@
 		100%{
 			color: white;
 			transform: translateX(45vw) translateY(47vh) matrix(1,0,0,1,0,0);
+		}
+	}
+
+	@keyframes text-away{
+		0%{
+			color: white;
+			transform: translateX(45vw) translateY(47vh) matrix(1,0,0,1,0,0);
+		}
+
+		100%{
+			color: black;
+			transform: translateX(45vw) translateY(44vh) matrix(1,0,1,1,0,0);
+
 		}
 	}
 
@@ -71,9 +92,14 @@
 	<div class = "text">0</div>
 	<div class = "text">1</div>
 	<div class = "text">8</div>
+	<div class = "loading"></div>
 </div>
 <script>
+	
+	
+	window.onload = f;
 	function f(){
+		document.getElementsByClassName("back")[0].style.animation = "move 1.5s forwards";
 		setTimeout(function(){
 			document.getElementsByClassName("text")[0].style.animation = "text-anim .5s ease-in-out forwards";
 			document.getElementsByClassName("text")[1].style.animation = "text-anim .5s ease-in-out .1s forwards";
@@ -87,7 +113,41 @@
 			document.getElementsByClassName("text")[9].style.animation = "text-anim .5s ease-in-out .9s forwards";
 			document.getElementsByClassName("text")[10].style.animation = "text-anim .5s ease-in-out 1s forwards";
 		}, 1600);
+
+		setTimeout(function(){
+			for(i=0;i<11;i++)
+			document.getElementsByClassName("text")[i].style.color = "white";
+			document.getElementsByClassName("loading")[0].style.display = "block";
+			j=0;
+			var load = setInterval(function(){ loader() }, 10);
+			function loader(){
+					document.getElementsByClassName("loading")[0].innerHTML = j+'%';
+					j++;
+					if(j>100)
+						loadStop();
+			}
+			function loadStop(){
+				clearInterval(load);
+			}
+		}, 3100);
+
+		setTimeout(function(){
+			document.getElementsByClassName("loading")[0].style.display = "none";
+		}, 4200);
+
+		setTimeout(function(){
+			document.getElementsByClassName("text")[0].style.animation = "text-away .5s ease-in-out forwards";
+			document.getElementsByClassName("text")[1].style.animation = "text-away .5s ease-in-out .1s forwards";
+			document.getElementsByClassName("text")[2].style.animation = "text-away .5s ease-in-out .2s forwards";
+			document.getElementsByClassName("text")[3].style.animation = "text-away .5s ease-in-out .3s forwards";
+			document.getElementsByClassName("text")[4].style.animation = "text-away .5s ease-in-out .4s forwards";
+			document.getElementsByClassName("text")[5].style.animation = "text-away .5s ease-in-out .5s forwards";
+			document.getElementsByClassName("text")[6].style.animation = "text-away .5s ease-in-out .6s forwards";
+			document.getElementsByClassName("text")[7].style.animation = "text-away .5s ease-in-out .7s forwards";
+			document.getElementsByClassName("text")[8].style.animation = "text-away .5s ease-in-out .8s forwards";
+			document.getElementsByClassName("text")[9].style.animation = "text-away .5s ease-in-out .9s forwards";
+			document.getElementsByClassName("text")[10].style.animation = "text-away .5s ease-in-out 1s forwards";
+		}, 4500);
 	}
-	f();
 </script>
 </html>
