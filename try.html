@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>anim try</title>
+</head>
+<body>
+<div class = "text">A</div>
+<div class = "text" style="animation-delay: .1s">P</div>
+<div class = "text" style="animation-delay: .2s">O</div>
+<div class = "text" style="animation-delay: .3s">G</div>
+<div class = "text" style="animation-delay: .4s">E</div>
+<div class = "text" style="animation-delay: .5s">E</div>
+</body>
+<style type="text/css">
+	body,html{
+		background-color: black;
+	}
+	.text{
+		display: inline-block;
+		transform: translateY(3vh) matrix(1,0,1,1,0,0);
+		font-size: 2vh;
+		/*color: white;*/
+		font-family: sans-serif;
+		animation: text-anim .5s forwards;
+
+	}
+
+	@keyframes text-anim{
+		0%{
+			transform: translateY(3vh) matrix(1,0,1,1,0,0);
+		}
+		100%{
+			color: white;
+			transform: translateY(0vh) matrix(1,0,0,1,0,0);
+		}
+	}
+</style>
+</html>
